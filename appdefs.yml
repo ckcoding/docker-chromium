@@ -1,0 +1,77 @@
+---
+
+#
+# Definitions for Chromium docker container.
+#
+# This file is used as data source to generate README.md and unRAID template files
+# from Jinja2 templates.
+#
+
+app:
+  id: 35
+  name: chromium
+  friendly_name: Chromium
+  gui_type: x11
+  base_os: alpine
+  project:
+    description: |-
+      Chromium is an open-source browser project that aims to build a safer, faster, and
+      more stable way for all users to experience the web.
+    url: https://www.chromium.org/Home/
+  unraid:
+    #support_url: https://forums.unraid.net/topic/XXXXX-support-chromium/
+    category: "Tools:"
+  documentation:
+    sections:
+      - title: Enable Usage of Sandbox
+        level: 2
+        content: |-
+          For security purpose, {{ app.friendly_name }} uses sandbox to remove unnecessary
+          privileges from renderer processes. Web content executes in a highly restrictive
+          environment, significantly reducing the impact of potential exploits.
+
+          Docker uses [seccomp profile] to restrict system calls available to the
+          container. By default, some system calls required to run sandboxes are not
+          allowed by the [default seccomp profile].
+          
+          There are several ways to allow {{ app.friendly_name }} to use its sandbox.
+          From the most to least secure:
+
+            1. **Use custom seccomp profile.** This is the most secure approach. Start
+               with the Docker's [default seccomp profile] and move the `unshare`
+               capability to the allowed list. Use this custom profile by creating the
+               container with the `--security-opt seccomp=/path/to/chrome.json`
+               parameter.
+            2. **Add the `SYS_ADMIN` capability.** This allows {{ app.friendly_name }} to
+               use its sandbox, but also adds unnecessary privileges. Create the container
+               with the `--cap-add=SYS_ADMIN` parameter.
+            3. **Run the container in privileged mode.** This effectively disables usage
+               of seccomp and is the least secure option. Create the container with the
+               `--privileged` parameter.
+
+          > [!CAUTION]
+          > If none of the above actions are used, {{ app.friendly_name }} will run with
+          > its sandbox disabled.
+
+          [default seccomp profile]: https://github.com/moby/moby/blob/master/vendor/github.com/moby/profiles/seccomp/default.json
+          [seccomp profile]: https://docs.docker.com/engine/security/seccomp/
+  changelog:
+    - version: 25.12.1
+      date: 2025-12-12
+      changes:
+        - 'Initial release.'
+
+container:
+  unsupported_volume: /storage
+
+  # Environment variables.
+  environment_variables: []
+
+  # Volumes
+  volumes: []
+
+  # Network ports
+  ports: []
+
+  # Devices
+  devices: []

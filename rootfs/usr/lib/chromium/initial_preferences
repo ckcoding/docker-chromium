@@ -1,0 +1,10 @@
+{
+  "announcement_notification_service_first_run_time": "13353214660983306",
+  "browser": {
+    "custom_chrome_frame": false,
+    "has_seen_welcome_page": true
+  },
+  "session": {
+    "restore_on_startup": 1
+  }
+}
