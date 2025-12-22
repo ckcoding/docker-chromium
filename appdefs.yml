@@ -56,6 +56,11 @@ app:
           [default seccomp profile]: https://github.com/moby/moby/blob/master/vendor/github.com/moby/profiles/seccomp/default.json
           [seccomp profile]: https://docs.docker.com/engine/security/seccomp/
   changelog:
+    - version: 25.12.3
+      date: 2025-12-22
+      changes:
+        - 'Updated baseimage to version 4.10.5, which brings the following changes:'
+        - '2:Fixed key combinations in some Linux applications broken by the Command key remapping.'
     - version: 25.12.2
       date: 2025-12-20
       changes:
