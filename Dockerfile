@@ -14,7 +14,7 @@ RUN strip check_pid_namespace
 RUN chmod u+s check_pid_namespace
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.23-v4.10.5
+FROM jlesage/baseimage-gui:alpine-3.23-v4.10.6
 
 # Docker image version is provided via build arg.
 ARG DOCKER_IMAGE_VERSION=
