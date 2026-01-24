@@ -83,7 +83,19 @@ container:
   unsupported_volume: /storage
 
   # Environment variables.
-  environment_variables: []
+  environment_variables:
+    - name: CHROMIUM_APP_URL
+      description: >-
+        URL of the website to launch in a dedicated, minimalist window without
+        browser UI components like the address bar or tabs, essentially running
+        it as a desktop application.
+      type: public
+      default: 0
+      unraid_template:
+        title: "Application mode URL"
+        display: advanced
+        required: false
+        mask: false
 
   # Volumes
   volumes: []

@@ -56,8 +56,9 @@ RUN \
     set-cont-env DOCKER_IMAGE_VERSION "$DOCKER_IMAGE_VERSION" && \
     true
 
-# Define mountable directories.
-VOLUME ["/config"]
+# Set public environment variables.
+ENV \
+    CHROMIUM_APP_URL=
 
 # Metadata.
 LABEL \
