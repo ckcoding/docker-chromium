@@ -20,7 +20,7 @@ FROM jlesage/baseimage-gui:alpine-3.23-v4.10.6
 ARG DOCKER_IMAGE_VERSION=
 
 # Define software versions.
-ARG CHROMIUM_VERSION=144.0.7559.109-r0
+ARG CHROMIUM_VERSION=144.0.7559.132-r0
 
 # Define software download URLs.
 
@@ -30,7 +30,7 @@ WORKDIR /tmp
 # Install Chromium.
 RUN \
     add-pkg \
-        chromium=${CHROMIUM_VERSION}
+        chromium
 
 # Install extra packages.
 RUN \
@@ -38,7 +38,8 @@ RUN \
         adwaita-icon-theme \
         mesa-gl \
         mesa-dri-gallium \
-        mesa-va-gallium
+        mesa-va-gallium \
+        font-noto-cjk
 
 # Generate and install favicons.
 RUN \
@@ -54,6 +55,8 @@ RUN \
     set-cont-env APP_NAME "Chromium" && \
     set-cont-env APP_VERSION "$CHROMIUM_VERSION" && \
     set-cont-env DOCKER_IMAGE_VERSION "$DOCKER_IMAGE_VERSION" && \
+    set-cont-env ENABLE_CJK_FONT "1" && \
+    set-cont-env LANG "zh_CN.UTF-8" && \
     true
 
 # Set public environment variables.

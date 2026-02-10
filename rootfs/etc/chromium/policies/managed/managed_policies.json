@@ -1,7 +1,12 @@
 {
   "DefaultBrowserSettingEnabled": false,
   "DefaultDownloadDirectory": "/config/Downloads",
-  "ExtensionInstallForcelist": [
-    "pnbbookneacpggbngfmhfggennhigonh"
-  ]
+  "SpellcheckLanguage": [
+    "zh-CN"
+  ],
+  "ApplicationLocaleValue": "zh-CN",
+  "BackgroundModeEnabled": false,
+  "MetricsReportingEnabled": false,
+  "TranslateEnabled": false,
+  "SyncDisabled": true
 }

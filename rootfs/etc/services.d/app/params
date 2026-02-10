@@ -6,11 +6,41 @@ if ! check_pid_namespace >/dev/null; then
     printf "%s\n" "--no-sandbox"
 fi
 
+# 基础参数
 printf "%s\n" "--disable-dev-shm-usage"
 printf "%s\n" "--ignore-gpu-blocklist"
 printf "%s\n" "--simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT'"
 printf "%s\n" "--start-maximized"
 printf "%s\n" "--user-data-dir=/config/chromium"
+
+# 中文
+printf "%s\n" "--lang=zh-CN"
+printf "%s\n" "--accept-lang=zh-CN,zh"
+
+# 渲染性能
+printf "%s\n" "--enable-gpu-rasterization"
+printf "%s\n" "--enable-zero-copy"
+printf "%s\n" "--num-raster-threads=4"
+printf "%s\n" "--force-color-profile=srgb"
+printf "%s\n" "--disable-smooth-scrolling"
+
+# 内存与进程优化
+printf "%s\n" "--disable-background-timer-throttling"
+printf "%s\n" "--disable-backgrounding-occluded-windows"
+printf "%s\n" "--disable-renderer-backgrounding"
+printf "%s\n" "--disable-extensions"
+printf "%s\n" "--disable-component-update"
+printf "%s\n" "--disable-default-apps"
+printf "%s\n" "--disable-translate"
+printf "%s\n" "--disable-sync"
+printf "%s\n" "--disable-domain-reliability"
+printf "%s\n" "--disable-client-side-phishing-detection"
+printf "%s\n" "--disable-hang-monitor"
+printf "%s\n" "--disable-popup-blocking"
+printf "%s\n" "--no-first-run"
+printf "%s\n" "--no-default-browser-check"
+printf "%s\n" "--metrics-recording-only"
+printf "%s\n" "--process-per-site"
 
 if [ -n "${CHROMIUM_APP_URL:-}" ]; then
     printf "%s\n" "--app=$CHROMIUM_APP_URL"
